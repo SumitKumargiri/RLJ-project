@@ -1,0 +1,403 @@
+import { Job } from "@/types/job.types"
+
+const denominationLogo = (name: string) => `${import.meta.env.BASE_URL}assets/denominations/${name}.png`
+
+const DENOMINATIONS = [
+  {
+    name: "Assemblies of God",
+    slug: "Assemblies-of-God",
+    count: 19,
+    logo: denominationLogo("assemblies-of-god"),
+  },
+  {
+    name: "Baptist - SBC",
+    slug: "Baptist-SBC",
+    count: 34,
+    logo: denominationLogo("southern-baptist"),
+  },
+  { name: "Baptist - General", slug: "Baptist", count: 22, logo: null },
+  { name: "Baptist - Alliance", slug: "Baptist-Alliance", count: 5, logo: null },
+  {
+    name: "Baptist - American Baptist",
+    slug: "Baptist-American-Baptist",
+    count: 11,
+    logo: denominationLogo("american-baptist"),
+  },
+  {
+    name: "Baptist - CBF",
+    slug: "Baptist-CBF",
+    count: 8,
+    logo: denominationLogo("cooperative-baptist"),
+  },
+  {
+    name: "Anglican Church in North America",
+    slug: "Anglican",
+    count: 14,
+    logo: denominationLogo("anglican-north-america"),
+  },
+  { name: "Bible Church", slug: "Bible-Church", count: 16, logo: null },
+  {
+    name: "Church of the Brethren",
+    slug: "Brethren",
+    count: 4,
+    logo: denominationLogo("church-brethren"),
+  },
+  { name: "Brethren - Grace", slug: "Brethren-Grace", count: 6, logo: null },
+  {
+    name: "Calvary Chapel",
+    slug: "Calvary-Chapel",
+    count: 13,
+    logo: denominationLogo("calvary-chapel"),
+  },
+  {
+    name: "Catholic",
+    slug: "Catholic",
+    count: 9,
+    logo: denominationLogo("catholic"),
+  },
+  {
+    name: "Christian Church (Disciples of Christ)",
+    slug: "Christian-Church",
+    count: 17,
+    logo: denominationLogo("christian-church"),
+  },
+  {
+    name: "Church of Christ",
+    slug: "Church-of-Christ",
+    count: 12,
+    logo: denominationLogo("church-of-christ"),
+  },
+  {
+    name: "Church of God",
+    slug: "Church-of-God",
+    count: 10,
+    logo: denominationLogo("church-of-god"),
+  },
+  {
+    name: "Church of the Nazarene",
+    slug: "Church-of-the-Nazarene",
+    count: 14,
+    logo: denominationLogo("nazarene"),
+  },
+  {
+    name: "Presbyterian Church in America (PCA)",
+    slug: "Presbyterian-PCA",
+    count: 25,
+    logo: denominationLogo("presbyterian-pca"),
+  },
+  {
+    name: "United Methodist Church",
+    slug: "United-Methodist-Church",
+    count: 31,
+    logo: denominationLogo("united-methodist"),
+  },
+  {
+    name: "Evangelical Lutheran Church in America",
+    slug: "ELCA",
+    count: 22,
+    logo: denominationLogo("elca"),
+  },
+  {
+    name: "Presbyterian Church (USA)",
+    slug: "Presbyterian-PCUSA",
+    count: 27,
+    logo: denominationLogo("presbyterian-pcusa"),
+  },
+  {
+    name: "The Episcopal Church",
+    slug: "Episcopal-Church",
+    count: 18,
+    logo: denominationLogo("episcopal"),
+  },
+  {
+    name: "United Church of Christ",
+    slug: "United-Church-of-Christ",
+    count: 15,
+    logo: denominationLogo("united-church-christ"),
+  },
+  {
+    name: "Reformed Church in America",
+    slug: "Reformed-Church-America",
+    count: 8,
+    logo: denominationLogo("reformed-church-america"),
+  },
+  {
+    name: "Christian Reformed Church",
+    slug: "Christian-Reformed-Church",
+    count: 12,
+    logo: denominationLogo("christian-reformed"),
+  },
+  {
+    name: "Moravian Church",
+    slug: "Moravian-Church",
+    count: 4,
+    logo: denominationLogo("moravian"),
+  },
+  {
+    name: "Mennonite Church USA",
+    slug: "Mennonite-Church-USA",
+    count: 7,
+    logo: denominationLogo("mennonite-usa"),
+  },
+  {
+    name: "Religious Society of Friends",
+    slug: "Religious-Society-Friends",
+    count: 5,
+    logo: denominationLogo("friends"),
+  },
+  {
+    name: "United Church of Canada",
+    slug: "United-Church-Canada",
+    count: 16,
+    logo: denominationLogo("united-church-canada"),
+  },
+  {
+    name: "Anglican Church of Canada",
+    slug: "Anglican-Church-Canada",
+    count: 14,
+    logo: denominationLogo("anglican-canada"),
+  },
+  {
+    name: "Presbyterian Church in Canada",
+    slug: "Presbyterian-Church-Canada",
+    count: 9,
+    logo: denominationLogo("presbyterian-canada"),
+  },
+  {
+    name: "Evangelical Lutheran Church in Canada",
+    slug: "ELCIC",
+    count: 8,
+    logo: denominationLogo("elcic"),
+  },
+  {
+    name: "Canadian Baptists",
+    slug: "Canadian-Baptists",
+    count: 11,
+    logo: denominationLogo("canadian-baptists"),
+  },
+  {
+    name: "Mennonite Church Canada",
+    slug: "Mennonite-Church-Canada",
+    count: 6,
+    logo: denominationLogo("mennonite-canada"),
+  },
+  {
+    name: "Pentecostal Assemblies of Canada",
+    slug: "PAOC",
+    count: 13,
+    logo: denominationLogo("paoc"),
+  },
+  {
+    name: "Non-Denominational",
+    slug: "Non-Denominational",
+    count: 41,
+    logo: null,
+  },
+]
+
+const FEATURED_MINISTRY_JOBS: Job[] = [
+  {
+    id: 1,
+    title: "Lead Pastor",
+    company: "Grace Community Church",
+    country: "United States",
+    state: "Oregon",
+    city: "Portland",
+    type: "FULL TIME",
+    date: "2026-10-13",
+    featured: true,
+    category: "Pastor",
+    denomination: "Baptist-SBC",
+    salary: "$78,000–$92,000",
+    workplace: "On-site",
+    deadline: "2026-11-15",
+  },
+  {
+    id: 2,
+    title: "Associate Pastor of Discipleship",
+    company: "Redeemer Fellowship",
+    country: "United States",
+    state: "Texas",
+    city: "Austin",
+    type: "FULL TIME",
+    date: "2026-10-12",
+    featured: true,
+    category: "Associate-Pastor",
+    denomination: "Non-Denominational",
+    salary: "$64,000–$76,000",
+    workplace: "Hybrid",
+    deadline: "2026-11-20",
+  },
+  {
+    id: 3,
+    title: "Youth Pastor",
+    company: "New Hope Church",
+    country: "United States",
+    state: "Tennessee",
+    city: "Nashville",
+    type: "FULL TIME",
+    date: "2026-10-11",
+    featured: true,
+    category: "Youth-Ministry",
+    denomination: "Assemblies-of-God",
+    salary: "$56,000–$68,000",
+    workplace: "On-site",
+    deadline: "2026-11-08",
+  },
+  {
+    id: 4,
+    title: "Worship Pastor",
+    company: "River City Church",
+    country: "United States",
+    state: "Florida",
+    city: "Jacksonville",
+    type: "FULL TIME",
+    date: "2026-10-10",
+    featured: true,
+    category: "Worship-Arts",
+    denomination: "Non-Denominational",
+    salary: "$60,000–$72,000",
+    workplace: "On-site",
+  },
+  {
+    id: 5,
+    title: "Children's Ministry Pastor",
+    company: "Crossroads Church",
+    country: "United States",
+    state: "Colorado",
+    city: "Denver",
+    type: "FULL TIME",
+    date: "2026-10-09",
+    featured: false,
+    category: "Childrens-Ministry",
+    denomination: "Christian-Church",
+    workplace: "Hybrid",
+    closed: true,
+  },
+  {
+    id: 6,
+    title: "Campus Pastor",
+    company: "Faith Church",
+    country: "United States",
+    state: "Arizona",
+    city: "Phoenix",
+    type: "FULL TIME",
+    date: "2026-10-08",
+    featured: true,
+    category: "Pastor",
+    denomination: "Non-Denominational",
+    salary: "$72,000–$84,000",
+    workplace: "On-site",
+    deadline: "2026-11-30",
+  },
+]
+
+const MINISTRY_ROLES = [
+  { title: "Senior Pastor", category: "Pastor" },
+  { title: "Executive Pastor", category: "Pastor" },
+  { title: "Associate Pastor", category: "Associate-Pastor" },
+  { title: "Teaching Pastor", category: "Pastor" },
+  { title: "Discipleship Pastor", category: "Adult-Ministry" },
+  { title: "Youth Pastor", category: "Youth-Ministry" },
+  { title: "Student Ministries Pastor", category: "Youth-Ministry" },
+  { title: "Children's Ministry Director", category: "Childrens-Ministry" },
+  { title: "Family Ministries Pastor", category: "Childrens-Ministry" },
+  { title: "Worship Pastor", category: "Worship-Arts" },
+  { title: "Creative Arts Director", category: "Worship-Arts" },
+  { title: "Connections Pastor", category: "Adult-Ministry" },
+  { title: "Groups and Care Pastor", category: "Counseling" },
+  { title: "Community Outreach Pastor", category: "Adult-Ministry" },
+  { title: "Missions Pastor", category: "Adult-Ministry" },
+  { title: "Church Planting Resident", category: "Pastor" },
+  { title: "Campus Pastor", category: "Pastor" },
+  { title: "Spiritual Formation Pastor", category: "Adult-Ministry" },
+  { title: "Pastoral Care Minister", category: "Counseling" },
+  { title: "Ministry Operations Director", category: "Administration-Business" },
+]
+
+const MINISTRY_CHURCHES = [
+  "Cornerstone Church",
+  "First Community Church",
+  "New Life Fellowship",
+  "Grace Bible Church",
+  "Hope City Church",
+  "Christ Community Church",
+  "The Summit Church",
+  "River Valley Church",
+  "Calvary Fellowship",
+  "Faith Baptist Church",
+  "Redeemer Church",
+  "Journey Christian Church",
+  "Trinity Presbyterian Church",
+  "Crosspoint Church",
+  "Living Waters Church",
+  "Northside Community Church",
+  "Restoration Church",
+  "Covenant Life Church",
+]
+
+const MINISTRY_LOCATIONS = [
+  ["Portland", "Oregon"],
+  ["Seattle", "Washington"],
+  ["Boise", "Idaho"],
+  ["Phoenix", "Arizona"],
+  ["Denver", "Colorado"],
+  ["Dallas", "Texas"],
+  ["Austin", "Texas"],
+  ["Nashville", "Tennessee"],
+  ["Atlanta", "Georgia"],
+  ["Charlotte", "North Carolina"],
+  ["Orlando", "Florida"],
+  ["Columbus", "Ohio"],
+  ["Chicago", "Illinois"],
+  ["Minneapolis", "Minnesota"],
+  ["Kansas City", "Missouri"],
+  ["Oklahoma City", "Oklahoma"],
+  ["Richmond", "Virginia"],
+  ["Louisville", "Kentucky"],
+] as const
+
+const JOBS: Job[] = [
+  ...FEATURED_MINISTRY_JOBS,
+  ...Array.from({ length: 210 }, (_, offset): Job => {
+    const id = offset + FEATURED_MINISTRY_JOBS.length + 1
+    const role = MINISTRY_ROLES[offset % MINISTRY_ROLES.length]
+    const [city, state] =
+      MINISTRY_LOCATIONS[offset % MINISTRY_LOCATIONS.length]
+    const date = new Date(Date.UTC(2026, 9, 7 - (offset % 120)))
+      .toISOString()
+      .slice(0, 10)
+    const types: Job["type"][] = [
+      "FULL TIME",
+      "FULL TIME",
+      "FULL TIME",
+      "PART TIME",
+      "INTERIM",
+    ]
+    return {
+      id,
+      title: role.title,
+      company: MINISTRY_CHURCHES[offset % MINISTRY_CHURCHES.length],
+      country: "United States",
+      state,
+      city,
+      type: types[offset % types.length],
+      date,
+      featured: offset % 23 === 0,
+      category: role.category,
+      denomination: DENOMINATIONS[offset % DENOMINATIONS.length].slug,
+      salary:
+        offset % 4 === 0
+          ? `$${52 + (offset % 5) * 4},000–$${64 + (offset % 5) * 4},000`
+          : undefined,
+      workplace:
+        offset % 11 === 0 ? "Remote" : offset % 5 === 0 ? "Hybrid" : "On-site",
+      deadline:
+        offset % 3 === 0
+          ? new Date(Date.UTC(2026, 10, 10 + (offset % 18)))
+              .toISOString()
+              .slice(0, 10)
+          : undefined,
+    }
+  }),
+]

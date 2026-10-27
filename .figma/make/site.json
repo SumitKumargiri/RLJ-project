@@ -1,0 +1,10 @@
+{
+  "description": "Connects churches with ministry candidates through transparent job postings, ensuring clarity in roles, compensation, and doctrinal alignment.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
